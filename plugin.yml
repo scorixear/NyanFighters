@@ -1,0 +1,9 @@
+name: NyanFighters
+
+version: 1.0
+
+description: NyanFighters - a Game inspired by NyanCat
+
+author: minecrafthaifl
+
+main: de.minecrafthaifl.nyanfighters.Nyanfighters
