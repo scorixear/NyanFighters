@@ -9,7 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class YamlHandler
 {
-    public static File createTempFile(String filename)
+    public static File createTempFile(String filename)                                                                  //erstellt Temp-File, wird nach Reload/Restart neu erstellt
     {
 
         File c = new File(Nyanfighters.getInstance().getDataFolder().getAbsolutePath());
@@ -37,7 +37,7 @@ public class YamlHandler
         }
         return f;
     }
-    public static File createFile(String filename)
+    public static File createFile(String filename)                                                                      //erstellt permanenten File
     {
 
         File c = new File(Nyanfighters.getInstance().getDataFolder().getAbsolutePath());

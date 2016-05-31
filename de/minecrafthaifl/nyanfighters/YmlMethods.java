@@ -12,7 +12,7 @@ import java.io.File;
  */
 public class YmlMethods
 {
-    public static Location getLobbySpawn()
+    public static Location getLobbySpawn()                                                                              //Liefert den LobbySpawn
     {
         File f = Nyanfighters.getInstance().getSpawnpoints();
         FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();
@@ -28,7 +28,7 @@ public class YmlMethods
         return l;
 
     }
-    public static Location getSpielSpawn(int n)
+    public static Location getSpielSpawn(int n)                                                                         //Liefert einen SpielSpawn
     {
         File f = Nyanfighters.getInstance().getSpawnpoints();
         FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();

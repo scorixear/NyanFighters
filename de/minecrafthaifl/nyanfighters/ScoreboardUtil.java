@@ -9,7 +9,7 @@ import org.bukkit.scoreboard.ScoreboardManager;
 
 public class ScoreboardUtil {
 
-    public static void sendScoreboard(Player p) {
+    public static void sendScoreboard(Player p) {                                                                       //Setzt den Scoreboard von Player p
 
         String name = p.getUniqueId().toString();
 
@@ -30,7 +30,7 @@ public class ScoreboardUtil {
         p.setScoreboard(board);
     }
 
-    public static void updateScoreboard(Player p) {
+    public static void updateScoreboard(Player p) {                                                                     //updated den Scoreboard von Player p
         ScoreboardUtil.sendScoreboard(p);
     }
 }

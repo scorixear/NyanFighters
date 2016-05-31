@@ -29,7 +29,7 @@ public class  GameListener {
     static int id;
     static int id2;
 
-    public static void lobbyWait()
+    public static void lobbyWait()                                                                                      //Lobby-Ablauf
     {
 
             time=90;
@@ -84,7 +84,7 @@ public class  GameListener {
             }, 20L,20L);
 
     }
-    public static void gameWait()
+    public static void gameWait()                                                                                       //Spiel-Ablauf
     {
         int spawn = 0;
         int i  = 0;
@@ -240,7 +240,7 @@ public class  GameListener {
         }, 20, 20L );
 
     }
-    public static void serverRestart()
+    public static void serverRestart()                                                                                  //Ende Ablauf
     {
         for(Player p: Bukkit.getOnlinePlayers())
         {

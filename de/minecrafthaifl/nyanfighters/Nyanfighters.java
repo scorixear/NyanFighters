@@ -15,17 +15,17 @@ import java.io.File;
  */
 public class Nyanfighters extends JavaPlugin
 {
-    private static Nyanfighters plugin;
-    private CommandFramework framework;
-    private File spawnpoints;
+    private static Nyanfighters plugin;                                                                                 //Klasse Nyanfighters
+    private CommandFramework framework;                                                                                 //framework für die Commands
+    private File spawnpoints;                                                                                           //Spawnpointsfile
     private FileConfiguration spawnpointsc;
-    private File players;
+    private File players;                                                                                               //Attacker-File
     private FileConfiguration playersc;
-    private File stats;
+    private File stats;                                                                                                 //Stats-File
     private FileConfiguration statsc;
-    private boolean game;
-    private boolean nomove;
-    private boolean noblocks;
+    private boolean game;                                                                                               //Spiel-Variable
+    private boolean nomove;                                                                                             //Vorbereitung-Variable
+    private boolean noblocks;                                                                                           //skyfall-Variable
     public void onEnable()
     {
         game=false;
@@ -45,7 +45,7 @@ public class Nyanfighters extends JavaPlugin
     }
     public void onDisable()
     {
-        for(Player p: Bukkit.getOnlinePlayers())
+        for(Player p: Bukkit.getOnlinePlayers())                                                                        //Notwendig wegen der Spectator-Collection
         {
             p.kickPlayer("Reload!");
         }
