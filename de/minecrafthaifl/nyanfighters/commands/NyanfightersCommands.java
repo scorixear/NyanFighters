@@ -31,14 +31,14 @@ public class NyanfightersCommands {
     {
         Player p = args.getPlayer();
         String[] arg = args.getArgs();
-        if(arg.length==0)
+        if(arg.length==0)                                                                   //keine Argumente
         {
             p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
             return;
         }
-        else if(arg.length==1)
+        else if(arg.length==1)                                                              //1 Argument
         {
-            if(arg[0].equals("Lobby"))
+            if(arg[0].equals("Lobby"))                                                      //Lobby-Argument
             {
                 Location l = p.getLocation();
                 int x= l.getBlockX();
@@ -59,15 +59,15 @@ public class NyanfightersCommands {
                 p.sendMessage("§6[Nyanfighters] §aLobbySpawn erfolgreich gesetzt!");
                 return;
             }
-            else
+            else                                                                                                        //falsches Argument
             {
                 p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
                 return;
             }
         }
-        else if(arg.length==2)
+        else if(arg.length==2)                                                                                          //2 Argumente
         {
-            if(arg[0].equals("Spiel"))
+            if(arg[0].equals("Spiel"))                                                                                  //1. Argument ist Spiel
             {
                 int i;
                 try
@@ -123,20 +123,20 @@ public class NyanfightersCommands {
                     }
 
                 }
-                else
+                else                                                                                                    //falsches 2. Argument
                 {
                     p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
                     return;
                 }
             }
-            else
+            else                                                                                                        //falsches 1. Argument
             {
                 p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
                 p.sendMessage("§6[Nyanfighters]§c Bedenke: um den Lobbyspawn zu setzten, nutze: /setspawn Lobby");
                 return;
             }
         }
-        else
+        else                                                                                                            //zu viele Argumente
         {
             p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
             return;
@@ -147,13 +147,13 @@ public class NyanfightersCommands {
     {
         Player p = args.getPlayer();
         String[] arg = args.getArgs();
-        if(arg.length==0) {
+        if(arg.length==0) {                                                                                             //kein Argument
             p.sendMessage("§6[Nyanfighters]§c Nutzung: /spawn <Lobby/Spiel> [Nummer]");
             return;
         }
-        else if(arg.length==1)
+        else if(arg.length==1)                                                                                          //1 Argument
         {
-            if(arg[0].equals("Lobby"))
+            if(arg[0].equals("Lobby"))                                                                                  //Lobby-Argument
             {
                 File f = Nyanfighters.getInstance().getSpawnpoints();
                 FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();
@@ -175,15 +175,15 @@ public class NyanfightersCommands {
                     return;
                 }
             }
-            else
+            else                                                                                                        //falsches Argument
             {
                 p.sendMessage("§6[Nyanfighters]§c Nutzung: /spawn <Lobby/Spiel> [Nummer]");
                 return;
             }
         }
-        else if(arg.length==2)
+        else if(arg.length==2)                                                                                          //2 Argumente
         {
-            if(arg[0].equals("Spiel"))
+            if(arg[0].equals("Spiel"))                                                                                  //1. Argument ist Spiel
             {
 
                 int i;
@@ -232,7 +232,7 @@ public class NyanfightersCommands {
                 }
 
             }
-            else
+            else                                                                                                        //falsches 1. Argument
             {
                 p.sendMessage("§6[Nyanfighters]§c Nutzung: /spawn <Lobby/Spiel> [Nummer]");
                 p.sendMessage("§6[Nyanfighters]§c Bedenke: Um dich zum LobbySpawn zu teleportieren, nutze: /spawn Lobby");
@@ -240,7 +240,7 @@ public class NyanfightersCommands {
             }
         }
 
-        else
+        else                                                                                                            //zu viele Argumente
         {
             p.sendMessage("§6[Nyanfighters]§c Nutzung: /spawn <Lobby/Spiel> [Nummer]");
             return;
@@ -252,20 +252,20 @@ public class NyanfightersCommands {
     {
         Player p = args.getPlayer();
         String[] arg = args.getArgs();
-        if(arg.length==0)
+        if(arg.length==0)                                                                                               //kein Argument
         {
             p.sendMessage("§6[Nyanfighters]§c Nutzung: /game <start/lobby/end>");
             return;
         }
-        else if(arg.length==1)
+        else if(arg.length==1)                                                                                          //1 Argument
         {
-            if(arg[0].equals("start"))
+            if(arg[0].equals("start"))                                                                                  //start Argument
             {
                 Nyanfighters.getInstance().getServer().getScheduler().cancelTasks(Nyanfighters.getInstance());
                 GameListener.gameWait();
                 GameListener.setTime(300);
             }
-            else if(arg[0].equals("lobby"))
+            else if(arg[0].equals("lobby"))                                                                             //lobby Argument
             {
                 Nyanfighters.getInstance().getServer().getScheduler().cancelTasks(Nyanfighters.getInstance());
                 Nyanfighters.getInstance().setGame(false);
@@ -273,7 +273,7 @@ public class NyanfightersCommands {
                 GameListener.setTime(90);
 
             }
-            else if(arg[0].equals("end"))
+            else if(arg[0].equals("end"))                                                                               //end Argument
             {
                 Nyanfighters.getInstance().getServer().getScheduler().cancelTasks(Nyanfighters.getInstance());
                 Nyanfighters.getInstance().setGame(true);
@@ -281,14 +281,14 @@ public class NyanfightersCommands {
                 GameListener.setTime(1);
 
             }
-            else
+            else                                                                                                        //falsches Argument
             {
                 p.sendMessage("§6[Nyanfighters]§c Nutzung: /game <start/lobby/end>");
                 return;
             }
 
         }
-        else
+        else                                                                                                            //zu viele Argumente
         {
             p.sendMessage("§6[Nyanfighters]§c Nutzung: /game <start/lobby/end>");
             return;
@@ -299,7 +299,7 @@ public class NyanfightersCommands {
     {
         Player p =args.getPlayer();
         String[] arg = args.getArgs();
-        if(arg.length == 0) {
+        if(arg.length == 0) {                                                                                           //kein Argument
             p.sendMessage("§7---====§8[§6Stats§8]§7====---");
             p.sendMessage("§a§lKills: §r§e" + Stats.getKills(p.getUniqueId().toString()));
             p.sendMessage("§c§lTode: §r§e" + Stats.getDeaths(p.getUniqueId().toString()));
