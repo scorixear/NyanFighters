@@ -1,23 +1,14 @@
 package de.minecrafthaifl.nyanfighters;
 
 import de.minecrafthaifl.nyanfighters.listeners.JoinListener;
-import net.minecraft.server.v1_9_R1.*;
-import org.apache.commons.lang.enums.Enum;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftItem;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_9_R1.inventory.CraftItemStack;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -213,6 +204,13 @@ public class  GameListener {
                                     winner= l;
                                 }
                             }
+                        }
+                    }
+                    if(Bukkit.getOnlinePlayers().size()==1)
+                    {
+                        for(Player p:Bukkit.getOnlinePlayers())
+                        {
+                            winner=p.getUniqueId().toString();
                         }
                     }
                     if(winner.equals(""))
