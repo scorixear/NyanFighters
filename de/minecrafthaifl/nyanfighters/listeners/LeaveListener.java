@@ -9,6 +9,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.yaml.snakeyaml.Yaml;
 
+import static de.minecrafthaifl.nyanfighters.listeners.MoveListener.playerTask;
+import static de.minecrafthaifl.nyanfighters.listeners.MoveListener.rotation;
+
 /**
  * Created by Paul on 10.05.2016.
  */
@@ -21,10 +24,17 @@ public class LeaveListener implements Listener
         FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();
         Nyanfighters.getInstance().getPlayersConfi().set(e.getPlayer().getUniqueId().toString(), null);
         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(), Nyanfighters.getInstance().getPlayers());
+        if(playerTask.containsKey(e.getPlayer().getUniqueId().toString()))
+        {
+            Bukkit.getScheduler().cancelTask(playerTask.get(e.getPlayer().getUniqueId().toString()));
+            playerTask.remove(e.getPlayer().getUniqueId().toString());
+            rotation.remove(e.getPlayer().getUniqueId().toString());
+        }
        if(JoinListener.getCP()!=null)
        {
            if(JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString()))                                    //Spieler ist kein Spec
            {
+
                JoinListener.getCP().remove(e.getPlayer().getUniqueId().toString());
                Bukkit.broadcastMessage("§6[NyanFighters] §8"+e.getPlayer().getName()+" hat das Spiel verlassen.");
                Nyanfighters.getInstance().getPlayersConfi().set(e.getPlayer().getUniqueId().toString()+".Attacker", null);

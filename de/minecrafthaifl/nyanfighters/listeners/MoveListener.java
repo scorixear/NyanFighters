@@ -23,8 +23,8 @@ import java.util.List;
  * Created by Paul on 02.05.2016.
  */
 public class MoveListener implements Listener {
-    private static HashMap<String, Integer> playerTask = new HashMap<String, Integer>();
-    private static HashMap<String, Double> rotation = new HashMap<String, Double>();
+    public static HashMap<String, Integer> playerTask = new HashMap<String, Integer>();
+    public static HashMap<String, Double> rotation = new HashMap<String, Double>();
 
     @EventHandler
     public void onMove(PlayerMoveEvent e) {
@@ -108,7 +108,7 @@ public class MoveListener implements Listener {
 
             for(Entity ef: e.getPlayer().getNearbyEntities(5,5,5))                                                      //Für alle nahen Entitys im radium von 5 Blöcken
             {
-                if(ef instanceof Player&&JoinListener.getCP().contains(((Player)ef).getUniqueId().toString()))          //Entity ist Player und kein Spectator
+                if(ef instanceof Player&&JoinListener.getCP().contains(((Player)ef).getUniqueId().toString())&&!Nyanfighters.getInstance().getGame())          //Entity ist Player und kein Spectator
                 {
                     Vector velo = e.getPlayer().getLocation().toVector().subtract(((Player)ef).getLocation().toVector()).normalize();//Spieler zurückschubsen
                     e.getPlayer().setVelocity(velo);

@@ -2,13 +2,15 @@ package de.minecrafthaifl.nyanfighters.listeners;
 
 import de.minecrafthaifl.nyanfighters.Nyanfighters;
 import de.minecrafthaifl.nyanfighters.YamlHandler;
-import net.minecraft.server.v1_9_R1.Explosion;
+
+import net.minecraft.server.v1_9_R2.Explosion;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
+
+import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

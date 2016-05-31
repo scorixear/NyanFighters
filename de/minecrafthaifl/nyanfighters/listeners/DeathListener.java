@@ -85,7 +85,7 @@ public class DeathListener implements Listener
             player.getInventory().setItemInOffHand(new ItemStack(Material.GOLDEN_APPLE, 16));
             player.getInventory().setItem(1, new ItemStack(Material.FISHING_ROD));
             player.getInventory().setItem(2, slime);
-            if (playersConfi.isSet(player.getUniqueId().toString() + ".Attacker")) {                                    //Todesmessage ausführen/Sound abspielen
+            if (playersConfi.isSet(player.getUniqueId().toString() + ".Attacker")&&!playersConfi.getString(player.getUniqueId().toString()).equals(player.getUniqueId().toString())) {                                    //Todesmessage ausführen/Sound abspielen
                 String uuid = playersConfi.getString(player.getUniqueId().toString() + ".Attacker");
                 UUID u = UUID.fromString(uuid);
                 String Attacker = Bukkit.getPlayer(u).getDisplayName();
@@ -95,6 +95,8 @@ public class DeathListener implements Listener
                 YamlHandler.saveYamlFile(playersConfi, Nyanfighters.getInstance().getPlayers());
             } else {
                 Bukkit.broadcastMessage("§6[NyanFighters] §c" + player.getDisplayName() + " §7 ist gestorben.");
+                playersConfi.set(player.getUniqueId().toString() + ".Attacker", null);
+                YamlHandler.saveYamlFile(playersConfi, Nyanfighters.getInstance().getPlayers());
             }
 
         }
