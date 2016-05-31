@@ -34,7 +34,7 @@ public class JoinListener implements Listener
         FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();
         Nyanfighters.getInstance().getPlayersConfi().set(p.getUniqueId().toString(), null);
         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(), Nyanfighters.getInstance().getPlayers());
-        if(c.isSet("LobbySpawn"))
+        if(c.isSet("LobbySpawn"))                                                                                       //Lobbyspawn ist gesetzt
         {
             Location l = YmlMethods.getLobbySpawn();
             p.teleport(l);
@@ -46,13 +46,13 @@ public class JoinListener implements Listener
             }
 
         }
-        else
+        else                                                                                                            //Lobbyspawn ist nicht gesetzt
         {
             p.sendMessage("§6[NyanFighters]§c Warning: No LobbySpawn is set!");
         }
-        if(Nyanfighters.getInstance().getGame()||Nyanfighters.getInstance().getNoMove())
+        if(Nyanfighters.getInstance().getGame()||Nyanfighters.getInstance().getNoMove())                                //Spiel läuft oder Vorbereitungszeit
         {
-            if(getCP()==null)
+            if(getCP()==null)                                                                                           //Als Spec hinzufügen
             {
                 setCP((Collection<Player>) Bukkit.getOnlinePlayers());
             }
@@ -61,7 +61,7 @@ public class JoinListener implements Listener
                 getCP().remove(p.getUniqueId().toString());
 
             }
-            for(String f: getCP())
+            for(String f: getCP())                                                                                      //Spieler hiden
             {
                 Bukkit.getPlayer(UUID.fromString(f)).hidePlayer(p);
 
@@ -70,9 +70,9 @@ public class JoinListener implements Listener
             p.setFlying(true);
 
         }
-        else
+        else                                                                                                            //Spiel läuft nicht
         {
-            if(getCP()==null)
+            if(getCP()==null)                                                                                           //Spieler ist normaler Spieler
             {
                 setCP((Collection<Player>) Bukkit.getOnlinePlayers());
             }
@@ -84,7 +84,7 @@ public class JoinListener implements Listener
 
 
     }
-    public static Collection<String>getCP()
+    public static Collection<String>getCP()                                                                             //gibt eine Collection mit UUIDs[Strings] zurück (keine Spectator)
     {
         if(cp==null)
         {
@@ -92,7 +92,7 @@ public class JoinListener implements Listener
         }
         return cp;
     }
-    public static void setCP(Collection<Player> cpe)
+    public static void setCP(Collection<Player> cpe)                                                                    //Setzt eine Collection aus Strings, fordert Collection aus Playern
     {
         cp=new ArrayList<String>();
         for(Player f:cpe)

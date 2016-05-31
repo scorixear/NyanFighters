@@ -21,10 +21,10 @@ public class EntityDamageListener implements Listener
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e)
     {
-        if(e.getEntity() instanceof Player)
+        if(e.getEntity() instanceof Player)                                                                             //Entity ist Spieler
         {
-            if (JoinListener.getCP().contains(((Player)e.getEntity()).getUniqueId().toString())) {
-                if ( e.getDamager() instanceof Snowball && ((Snowball) e.getDamager()).getShooter() instanceof Player) {
+            if (JoinListener.getCP().contains(((Player)e.getEntity()).getUniqueId().toString())) {                      //Spieler ist kein Spectator
+                if ( e.getDamager() instanceof Snowball && ((Snowball) e.getDamager()).getShooter() instanceof Player) {//Attacker ist Snowball, Shooter ist Spieler
                     FileConfiguration c = Nyanfighters.getInstance().getPlayersConfi();
                     File f = Nyanfighters.getInstance().getPlayers();
                     e.setDamage(10);
@@ -32,7 +32,7 @@ public class EntityDamageListener implements Listener
                     String uuidb = ((Player) ((Snowball) e.getDamager()).getShooter()).getUniqueId().toString();
                     c.set(uuida + ".Attacker", uuidb);
                     YamlHandler.saveYamlFile(c, f);
-                } else if ( e.getDamager() instanceof Player) {
+                } else if ( e.getDamager() instanceof Player) {                                                         //Attacker ist Spieler
                     FileConfiguration c = Nyanfighters.getInstance().getPlayersConfi();
                     File f = Nyanfighters.getInstance().getPlayers();
 
@@ -40,20 +40,12 @@ public class EntityDamageListener implements Listener
                     String uuidb = ((Player) e.getDamager()).getUniqueId().toString();
                     c.set(uuida + ".Attacker", uuidb);
                     YamlHandler.saveYamlFile(c, f);
-                } else if ( e.getDamager() instanceof FishHook && ((FishHook) e.getDamager()).getShooter() instanceof Player) {
+                } else if ( e.getDamager() instanceof FishHook && ((FishHook) e.getDamager()).getShooter() instanceof Player) {//Attacker ist Angel, Shooter ist Spieler
                     FileConfiguration c = Nyanfighters.getInstance().getPlayersConfi();
                     File f = Nyanfighters.getInstance().getPlayers();
 
                     String uuida = ((Player) e.getEntity()).getUniqueId().toString();
                     String uuidb = ((Player) ((FishHook) e.getDamager()).getShooter()).getUniqueId().toString();
-                    c.set(uuida + ".Attacker", uuidb);
-                    YamlHandler.saveYamlFile(c, f);
-                } else if ( e.getDamager() instanceof EnderPearl && ((EnderPearl) e.getDamager()).getShooter() instanceof Player) {
-                    FileConfiguration c = Nyanfighters.getInstance().getPlayersConfi();
-                    File f = Nyanfighters.getInstance().getPlayers();
-
-                    String uuida = ((Player) e.getEntity()).getUniqueId().toString();
-                    String uuidb = ((Player) ((EnderPearl) e.getDamager()).getShooter()).getUniqueId().toString();
                     c.set(uuida + ".Attacker", uuidb);
                     YamlHandler.saveYamlFile(c, f);
                 }

@@ -29,17 +29,18 @@ public class MoveListener implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent e) {
 
-        if (JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString())) {
+        if (JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString())) {                                    //Spieler ist kein Spec
             Player p = e.getPlayer();
             Location l = e.getTo();
             List<Player> players = new ArrayList<Player>(Bukkit.getOnlinePlayers());
             players.remove(p);
 
-            if (Nyanfighters.getInstance().getNoMove()) {
+            if (Nyanfighters.getInstance().getNoMove()) {                                                               //Vorbereitungszeit ist aktiv
                 e.setCancelled(true);
                 return;
             } else if (!Nyanfighters.getInstance().getNoBlocks() && Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())) {
-                if ((l.getYaw() <= -45 && l.getYaw() > -135.0) || (l.getYaw() <= 305 && l.getYaw() > 215)) {
+                //Specialitem Skyfall ist nicht aktiv, Spiel läuft und Spieler hat sich über einen Block hinaus bewegt (unnötiges Blocksetzen verhindert)
+                if ((l.getYaw() <= -45 && l.getYaw() > -135.0) || (l.getYaw() <= 305 && l.getYaw() > 215)) {            //Einstellen der Farben des Regenbogens, abhängig vom Yaw
                     setArea2(-1, 1, l, e.getPlayer());
                 } else if ((l.getYaw() <= -305 || (l.getYaw() > -45 && l.getYaw() <= 0)) || ((l.getYaw() <= 45 && l.getYaw() >= 0) || l.getYaw() > 305)) {
                     setArea(1, 1, l, e.getPlayer());
@@ -49,12 +50,12 @@ public class MoveListener implements Listener {
                     setArea(-1, -1, l, e.getPlayer());
                 }
             }
-            if (playerTask.containsKey(p.getUniqueId().toString())) {
-                Bukkit.getScheduler().cancelTask(playerTask.get(p.getUniqueId().toString()));
+            if (playerTask.containsKey(p.getUniqueId().toString())) {                                                   //Die Spiralen setzten, falls welche schon vorhanden sind
+                Bukkit.getScheduler().cancelTask(playerTask.get(p.getUniqueId().toString()));                           //aktuellen Schedule abbrechen
                 playerTask.remove(p.getUniqueId().toString());
                 rotation.remove(p.getUniqueId().toString());
                 rotation.put(p.getUniqueId().toString(), 0.0);
-                playerTask.put(p.getUniqueId().toString(), Bukkit.getScheduler().runTaskTimer(Nyanfighters.getInstance(), new Runnable() {
+                playerTask.put(p.getUniqueId().toString(), Bukkit.getScheduler().runTaskTimer(Nyanfighters.getInstance(), new Runnable() {//Rotation der Spirale anstellen/Spirale setzten
                     @Override
                     public void run() {
                         for (double j = 0.0; j <= 720.0; j = j + 20.0) {
@@ -76,9 +77,9 @@ public class MoveListener implements Listener {
                         rotation.put(p.getUniqueId().toString(), rotation2);
                     }
                 }, 0L, 2L).getTaskId());
-            } else {
+            } else {                                                                                                    //Spirale existierte noch nicht
                 rotation.put(p.getUniqueId().toString(), 0.0);
-                playerTask.put(p.getUniqueId().toString(), Bukkit.getScheduler().runTaskTimer(Nyanfighters.getInstance(), new Runnable() {
+                playerTask.put(p.getUniqueId().toString(), Bukkit.getScheduler().runTaskTimer(Nyanfighters.getInstance(), new Runnable() {//Rotation anstellen/Spirale setzten
                     @Override
                     public void run() {
                         for (double j = 0.0; j <= 720.0; j = j + 20.0) {
@@ -103,13 +104,13 @@ public class MoveListener implements Listener {
                 }, 0L, 2L).getTaskId());
             }
         }
-        else {
+        else {                                                                                                          //Spieler ist Spectator
 
-            for(Entity ef: e.getPlayer().getNearbyEntities(5,5,5))
+            for(Entity ef: e.getPlayer().getNearbyEntities(5,5,5))                                                      //Für alle nahen Entitys im radium von 5 Blöcken
             {
-                if(ef instanceof Player&&JoinListener.getCP().contains(((Player)ef).getUniqueId().toString()))
+                if(ef instanceof Player&&JoinListener.getCP().contains(((Player)ef).getUniqueId().toString()))          //Entity ist Player und kein Spectator
                 {
-                    Vector velo = e.getPlayer().getLocation().toVector().subtract(((Player)ef).getLocation().toVector()).normalize();
+                    Vector velo = e.getPlayer().getLocation().toVector().subtract(((Player)ef).getLocation().toVector()).normalize();//Spieler zurückschubsen
                     e.getPlayer().setVelocity(velo);
 
 
@@ -119,9 +120,9 @@ public class MoveListener implements Listener {
         }
     }
 
-    public void setArea(int x, int z, Location start, Player p) {
-        if (p.getLocation().getPitch() > 65) {
-            setAir("start", 0, 0, start, 4);
+    public void setArea(int x, int z, Location start, Player p) {                                                       //setzt den Regenbogen. x und z sind jeweils die Verschiebungen,
+        if (p.getLocation().getPitch() > 65) {                                      //setzt Luft                        //würde man den linken Block (x) und den vorderen Block(z), um eine Längeneinheit
+            setAir("start", 0, 0, start, 4);                                                                            //verschoben, betrachten
             setAir("left", x, 0, start, 1);
             setAir("lefttwice", x * 2, 0, start, 14);
             setAir("right", -x, 0, start, 5);
@@ -136,7 +137,7 @@ public class MoveListener implements Listener {
             setAir("lefttwiceback", x * 2, -z, start, 14);
             setAir("rightback", -x, -z, start, 5);
             setAir("righttwiceback", (-x) * 2, -z, start, 9);
-        } else {
+        } else {                                                                    //setzt Blöcke
             setBlocks("start", 0, 0, start, 4);
             setBlocks("left", x, 0, start, 1);
             setBlocks("lefttwice", x * 2, 0, start, 14);
@@ -155,9 +156,9 @@ public class MoveListener implements Listener {
         }
     }
 
-    public void setArea2(int x, int z, Location start, Player p) {
-        if (p.getLocation().getPitch() > 65) {
-            setAir("start", 0, 0, start, 4);
+    public void setArea2(int x, int z, Location start, Player p) {                                                      //setzt den Regenbogen. x und z sind jeweils die Verschiebungen,
+        if (p.getLocation().getPitch() > 65) {                                                                          //würde man den linken Block (z) und den vorderen Block(x), um eine Längeneinheit
+            setAir("start", 0, 0, start, 4);                                                                            //verschoben, betrachten
             setAir("left", 0, x, start, 1);
             setAir("lefttwice", 0, x * 2, start, 14);
             setAir("right", 0, -x, start, 5);
@@ -191,7 +192,7 @@ public class MoveListener implements Listener {
         }
     }
 
-    public void setBlocks(String s, int x, int z, Location start, int id) {
+    public void setBlocks(String s, int x, int z, Location start, int id) {                                             //setzt einen Block mit den jeweiligen Verschiebungen ausgehend von einer Startlocation und einer ID des Blockes (nur Fakeblocks)
         Location left = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY() - 1, start.getBlockZ() + z);
         Location leftair = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY(), start.getBlockZ() + z);
         if (leftair.getBlock().getType() == Material.AIR) {
@@ -218,7 +219,7 @@ public class MoveListener implements Listener {
         }
     }
 
-    public void setAir(String s, int x, int z, Location start, int id) {
+    public void setAir(String s, int x, int z, Location start, int id) {                                                //setzt Luft mit den jeweiligen Verschiebungen ausgehend von einer Startlocation (nur Fakeblocks)
 
         Location left = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY() - 1, start.getBlockZ() + z);
         if (left.getBlock().getType() == Material.AIR)
@@ -249,7 +250,7 @@ public class MoveListener implements Listener {
         }
     }
 
-    public void removeBlock(Location start, Location remove, int x, int y, int z, Material block, byte data) {
+    public void removeBlock(Location start, Location remove, int x, int y, int z, Material block, byte data) {          //entfernt den Block nach 5 Sekunden (Fakeblocks)
         Bukkit.getScheduler().scheduleSyncDelayedTask(Nyanfighters.getInstance(), new Runnable() {
             @Override
             public void run() {

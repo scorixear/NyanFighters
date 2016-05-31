@@ -23,7 +23,7 @@ public class LeaveListener implements Listener
         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(), Nyanfighters.getInstance().getPlayers());
        if(JoinListener.getCP()!=null)
        {
-           if(JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString()))
+           if(JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString()))                                    //Spieler ist kein Spec
            {
                JoinListener.getCP().remove(e.getPlayer().getUniqueId().toString());
                Bukkit.broadcastMessage("§6[NyanFighters] §8"+e.getPlayer().getName()+" hat das Spiel verlassen.");

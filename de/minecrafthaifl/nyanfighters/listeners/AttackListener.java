@@ -17,22 +17,22 @@ public class AttackListener implements Listener
     public void onAttack(EntityDamageByEntityEvent e)
     {
 
-        if(e.getDamager() instanceof Player)
+        if(e.getDamager() instanceof Player)                                                                            //Angreifer ist Spieler
         {
-            if(e.getEntity()instanceof Player)
+            if(e.getEntity()instanceof Player)                                                                          //Angegriffene ist Spieler
             {
-                if(!Nyanfighters.getInstance().getGame())
+                if(!Nyanfighters.getInstance().getGame())                                                               //Spiel läuft nicht
                 {
                     e.setCancelled(true);
                 }
-                else
+                else                                                                                                    //Spiel läuft
                 {
-                    if (JoinListener.getCP().contains(((Player)e.getEntity()).getUniqueId().toString())) {
+                    if (JoinListener.getCP().contains(((Player)e.getEntity()).getUniqueId().toString())) {              //Angegriffener ist kein Spectator
                         FileConfiguration c = Nyanfighters.getInstance().getPlayersConfi();
                         c.set(((Player) e.getEntity()).getUniqueId().toString()+".Attacker",((Player) e.getDamager()).getUniqueId());
                         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(),Nyanfighters.getInstance().getPlayers());
                     }
-                    else
+                    else                                                                                                //Angegriffener ist Spectator
                     {
                         e.setCancelled(true);
                     }

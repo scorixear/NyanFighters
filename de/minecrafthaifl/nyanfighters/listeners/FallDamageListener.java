@@ -17,7 +17,7 @@ public class FallDamageListener implements Listener
     @EventHandler
     public void onFallDamage(EntityDamageEvent e)
     {
-        if(e.getCause().equals(EntityDamageEvent.DamageCause.FALL)&&!Nyanfighters.getInstance().getNoBlocks())
+        if(e.getCause().equals(EntityDamageEvent.DamageCause.FALL)&&!Nyanfighters.getInstance().getNoBlocks())          //Falldamage ausstellen, wenn gerade kein skyfall-item aktiviert wurde
         {
             e.setCancelled(true);
         }

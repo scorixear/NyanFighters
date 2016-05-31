@@ -31,14 +31,14 @@ public class RightClickListener implements Listener
     @EventHandler
      public void onClick(PlayerInteractEvent e)
     {
-        if (JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString())) {
-            if (e.getAction() == Action.RIGHT_CLICK_AIR || Action.RIGHT_CLICK_BLOCK == e.getAction()) {
-                if (e.getItem() != null) {
-                    if (e.getItem().getType() == Material.SLIME_BLOCK) {
+        if (JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString())) {                                    //Spieler ist kein Spec
+            if (e.getAction() == Action.RIGHT_CLICK_AIR || Action.RIGHT_CLICK_BLOCK == e.getAction()) {                 //Spieler macht Rechtsklick
+                if (e.getItem() != null) {                                                                              //Item ist nicht null
+                    if (e.getItem().getType() == Material.SLIME_BLOCK) {                                                //Item ist SlimeBlock -->Jumpboost
                         e.setCancelled(true);
                         e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 30 * 20, 4));
                         e.getPlayer().getInventory().setItem(e.getPlayer().getInventory().getHeldItemSlot(), new ItemStack(Material.AIR));
-                    } else if (e.getItem().getType() == Material.SNOW_BALL) {
+                    } else if (e.getItem().getType() == Material.SNOW_BALL) {                                           //Item ist Schneeball --->Projektilwurf
                         e.setCancelled(true);
                         Snowball sb = e.getPlayer().launchProjectile(Snowball.class);
                         sb.setShooter(e.getPlayer());
@@ -50,7 +50,7 @@ public class RightClickListener implements Listener
                         }
 
 
-                    } else if (e.getItem().getType() == Material.EGG) {
+                    } else if (e.getItem().getType() == Material.EGG) {                                                 //Item ist Ei -->Projektilwurf
                         e.setCancelled(true);
                         Egg egg = e.getPlayer().launchProjectile(Egg.class);
                         egg.setShooter(e.getPlayer());
@@ -60,15 +60,10 @@ public class RightClickListener implements Listener
                         } else {
                             e.getItem().setAmount(e.getItem().getAmount() - 1);
                         }
-                    } else if (e.getItem().getType() == Material.ENDER_PEARL) {
+                    } else if (e.getItem().getType() == Material.ENDER_PEARL) {                                         //Item ist Enderpearl -->Teleport um 23 Blöcke
                         e.setCancelled(true);
                         Vector a = e.getPlayer().getLocation().getDirection().normalize();
                         Location l = e.getPlayer().getLocation().add(a.multiply(23));
-                    /*for(int k = 22; k>=0&&!l.getBlock().getType().equals(Material.AIR);k--)
-                    {
-                        l = e.getPlayer().getLocation().add(a.multiply(k));
-                        Bukkit.broadcastMessage(""+l.getBlock().getType());
-                    }*/
                         e.getPlayer().teleport(l);
                         if (e.getItem().getAmount() == 1) {
                             e.getPlayer().getInventory().setItem(e.getPlayer().getInventory().getHeldItemSlot(), new ItemStack(Material.AIR));
@@ -76,7 +71,7 @@ public class RightClickListener implements Listener
                             e.getItem().setAmount(e.getItem().getAmount() - 1);
                         }
                     } else {
-                        if (e.getItem().getType() == Material.SPLASH_POTION) {
+                        if (e.getItem().getType() == Material.SPLASH_POTION) {                                          //item ist Splashpotion --> Wirf alle Spieler, die nicht im Umkreis von 4 Blöcken sind, in die Luft
                             e.setCancelled(true);
                             Collection<String> c = new ArrayList<String>();
                             for (String f : JoinListener.getCP()) {

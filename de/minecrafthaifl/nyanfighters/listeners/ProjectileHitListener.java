@@ -28,17 +28,17 @@ public class ProjectileHitListener implements Listener
     @EventHandler
     public void onHit(ProjectileHitEvent e)
     {
-        if(e.getEntity() instanceof Snowball)
+        if(e.getEntity() instanceof Snowball)                                                                           //Entity ist Schneeball
         {
             Snowball sb = (Snowball) e.getEntity();
-            if(sb.getShooter() instanceof Player)
+            if(sb.getShooter() instanceof Player)                                                                       //Shooter ist Spieler
             {
                 Explosion ex =((CraftWorld) sb.getWorld()).getHandle().createExplosion(((CraftPlayer) sb.getShooter()).getHandle(), sb.getLocation().getX(), sb.getLocation().getY()+1, sb.getLocation().getZ(), 1.5F, false, false);
-                for(Entity en:sb.getNearbyEntities(1,1,1))
+                for(Entity en:sb.getNearbyEntities(1,1,1))                                                              //Alle um 1 Block nahen Entitys
                 {
-                    if(en instanceof Player)
+                    if(en instanceof Player)                                                                            //Entity ist Spieler
                     {
-                        Nyanfighters.getInstance().getPlayersConfi().set(((Player) en).getUniqueId().toString()+".Attacker", ((CraftPlayer) sb.getShooter()).getUniqueId().toString());
+                        Nyanfighters.getInstance().getPlayersConfi().set(((Player) en).getUniqueId().toString()+".Attacker", ((CraftPlayer) sb.getShooter()).getUniqueId().toString());//Shooter als Attacker hinzugefügt
                         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(),Nyanfighters.getInstance().getPlayers());
                     }
                 }
@@ -46,16 +46,16 @@ public class ProjectileHitListener implements Listener
             }
 
         }
-        else if(e.getEntity() instanceof Egg)
+        else if(e.getEntity() instanceof Egg)                                                                           //Entity ist Ei
         {
             Egg egg = (Egg) e.getEntity();
-            if(egg.getShooter() instanceof Player)
+            if(egg.getShooter() instanceof Player)                                                                      //Shooter ist Spieler
             {
                 setArea(1,1,e.getEntity().getLocation());
             }
         }
     }
-    public void setArea(int x, int z, Location start)
+    public void setArea(int x, int z, Location start)                                                                   //Setzt 3x3 Würfel asu Spinnenweben(fakeblocks), siehe setArea Movelistener
     {
         setBlocks("start",0,0,0,start);
         setBlocks("left",x,0,0,start);
@@ -87,7 +87,7 @@ public class ProjectileHitListener implements Listener
         setBlocks("leftbackupup",x,2,-z,start);
         setBlocks("rightbackupup",-x,2,-z,start);
     }
-    public void setBlocks(String s, int x, int y, int z, Location start)
+    public void setBlocks(String s, int x, int y, int z, Location start)                                                //Setzt Fakeblocks (siehe setBlocks Movelistener)
     {
 
         Location web = new Location(start.getWorld(), start.getBlockX()+x,start.getBlockY()+y, start.getBlockZ()+z);
@@ -99,7 +99,7 @@ public class ProjectileHitListener implements Listener
         }
 
     }
-    public void removeBlock(Location start, Location remove, int x, int y, int z) {
+    public void removeBlock(Location start, Location remove, int x, int y, int z) {                                     //entfernt jeweilige Blöcke nach 10 Sekunden
         Bukkit.getScheduler().scheduleSyncDelayedTask(Nyanfighters.getInstance(), new Runnable() {
             @Override
             public void run() {
