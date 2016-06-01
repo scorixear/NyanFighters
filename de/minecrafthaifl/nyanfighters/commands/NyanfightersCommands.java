@@ -4,23 +4,10 @@ import com.minnymin.command.Command;
 import com.minnymin.command.CommandArgs;
 import de.minecrafthaifl.nyanfighters.*;
 import org.bukkit.*;
-import org.bukkit.block.Biome;
-import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.*;
-import org.bukkit.generator.BlockPopulator;
-import org.bukkit.generator.ChunkGenerator;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.metadata.MetadataValue;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.util.Vector;
-
 import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+
 
 /**
  * Created by Paul on 27.04.2016.
