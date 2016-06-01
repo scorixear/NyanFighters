@@ -131,11 +131,11 @@ public class  GameListener {
                     ItemMeta trapm = trap.getItemMeta();
                     trapm.setDisplayName("§r3§fSpinnenfalle");
                     trap.setItemMeta(trapm);
-                    ItemStack skyfallx = new ItemStack(Material.SPLASH_POTION);
-                    ItemMeta skyfallm = skyfallx.getItemMeta();
-                    skyfallm.setDisplayName("§r§4SkyFall");
-                    skyfallx.setItemMeta(skyfallm);
-                    addRandomItem(trap,granade,skyfallx);
+                    ItemStack pusherx = new ItemStack(Material.SPLASH_POTION);
+                    ItemMeta pusherm = pusherx.getItemMeta();
+                    pusherm.setDisplayName("§r§4Pusher");
+                    pusherx.setItemMeta(pusherm);
+                    addRandomItem(trap,granade,pusherx);
                     Bukkit.broadcastMessage("§6[NyanFighters] §a Neue Special-Items wurden ausgeteilt!");
                 }
                 if (time == 300) {
@@ -279,7 +279,7 @@ public class  GameListener {
             }
         }, 20, 20L);
     }
-    public static void addRandomItem(ItemStack trap, ItemStack granade, ItemStack skyfall)
+    public static void addRandomItem(ItemStack trap, ItemStack granade, ItemStack pusher)
     {
         for(String p:JoinListener.getCP()) {
             double random = Math.random() * 3;
@@ -288,7 +288,7 @@ public class  GameListener {
             } else if (random < 2) {
                 Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(granade);
             } else {
-                Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(skyfall);
+                Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(pusher);
                 Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
             }
         }
