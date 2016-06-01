@@ -25,12 +25,12 @@ public class Nyanfighters extends JavaPlugin
     private FileConfiguration statsc;
     private boolean game;                                                                                               //Spiel-Variable
     private boolean nomove;                                                                                             //Vorbereitung-Variable
-    private boolean noblocks;                                                                                           //skyfall-Variable
+    //private boolean noblocks;                                                                                           //skyfall-Variable
     public void onEnable()
     {
         game=false;
         nomove=false;
-        noblocks=false;
+       // noblocks=false;
         plugin = this;
         framework = new CommandFramework(this);
         framework.registerCommands(new NyanfightersCommands());
@@ -82,8 +82,8 @@ public class Nyanfighters extends JavaPlugin
     public void setGame(boolean g){game=g;}
     public void setNoMove(boolean g){nomove=g;}
     public boolean getNoMove() {return nomove;}
-    public void setNoBlocks(boolean b){noblocks=b;}
-    public boolean getNoBlocks() {return noblocks;}
+    //public void setNoBlocks(boolean b){noblocks=b;}
+    //public boolean getNoBlocks() {return noblocks;}
     public void registerListener()
     {
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
