@@ -73,7 +73,7 @@ public class RightClickListener implements Listener
                     } else {
                         if (e.getItem().getType() == Material.SPLASH_POTION) {                                          //item ist Splashpotion --> Wirf alle Spieler, die nicht im Umkreis von 4 Blöcken sind, in die Luft
                             e.setCancelled(true);
-                            Collection<String> c = new ArrayList<String>();
+                            /*Collection<String> c = new ArrayList<String>();
                             for (String f : JoinListener.getCP()) {
                                 c.add(f);
                                 if (!Bukkit.getPlayer(UUID.fromString(f)).equals(null)) {
@@ -99,6 +99,18 @@ public class RightClickListener implements Listener
                                         YamlHandler.saveYamlFile(playersConfi, players);
                                     }
                                 }
+                            }*/
+                            for(Entity pl:e.getPlayer().getNearbyEntities(5,5,5))
+                            {
+                                if(pl instanceof Player)
+                                {
+                                    if(JoinListener.getCP().contains(((Player)pl).getUniqueId().toString()))
+                                    {
+                                        Vector velo = ((Player)pl).getLocation().toVector().subtract(e.getPlayer().getLocation().toVector()).normalize();//Spieler zurückschubsen
+                                        ((Player)pl).setVelocity(velo.multiply(5));
+                                    }
+                                }
+
                             }
                             if (e.getItem().getAmount() == 1) {
                                 e.getPlayer().getInventory().setItem(e.getPlayer().getInventory().getHeldItemSlot(), new ItemStack(Material.AIR));

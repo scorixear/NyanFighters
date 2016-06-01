@@ -38,8 +38,9 @@ public class MoveListener implements Listener {
             if (Nyanfighters.getInstance().getNoMove()) {                                                               //Vorbereitungszeit ist aktiv
                 e.setCancelled(true);
                 return;
-            } else if (!Nyanfighters.getInstance().getNoBlocks() && Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())) {
-                //Specialitem Skyfall ist nicht aktiv, Spiel läuft und Spieler hat sich über einen Block hinaus bewegt (unnötiges Blocksetzen verhindert)
+            } else if(Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())){
+            //} else if (!Nyanfighters.getInstance().getNoBlocks() && Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())) {
+                // Spiel läuft und Spieler hat sich über einen Block hinaus bewegt (unnötiges Blocksetzen verhindert)
                 if ((l.getYaw() <= -45 && l.getYaw() > -135.0) || (l.getYaw() <= 305 && l.getYaw() > 215)) {            //Einstellen der Farben des Regenbogens, abhängig vom Yaw
                     setArea2(-1, 1, l, e.getPlayer());
                 } else if ((l.getYaw() <= -305 || (l.getYaw() > -45 && l.getYaw() <= 0)) || ((l.getYaw() <= 45 && l.getYaw() >= 0) || l.getYaw() > 305)) {
