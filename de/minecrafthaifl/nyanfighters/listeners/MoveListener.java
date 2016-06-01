@@ -1,10 +1,9 @@
 package de.minecrafthaifl.nyanfighters.listeners;
 
 import com.darkblade12.particleeffect.ParticleEffect;
-import com.sun.xml.internal.ws.util.HandlerAnnotationInfo;
+
 import de.minecrafthaifl.nyanfighters.Nyanfighters;
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -13,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

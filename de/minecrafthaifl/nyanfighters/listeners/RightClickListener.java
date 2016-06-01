@@ -1,12 +1,8 @@
 package de.minecrafthaifl.nyanfighters.listeners;
 
-import de.minecrafthaifl.nyanfighters.Nyanfighters;
-import de.minecrafthaifl.nyanfighters.YamlHandler;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,10 +14,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.UUID;
 
 /**
  * Created by Paul on 10.05.2016.

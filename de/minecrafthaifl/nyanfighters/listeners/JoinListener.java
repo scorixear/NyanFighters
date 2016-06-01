@@ -1,20 +1,15 @@
 package de.minecrafthaifl.nyanfighters.listeners;
 
-import com.darkblade12.particleeffect.ParticleEffect;
 import de.minecrafthaifl.nyanfighters.Nyanfighters;
 import de.minecrafthaifl.nyanfighters.YamlHandler;
 import de.minecrafthaifl.nyanfighters.YmlMethods;
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;

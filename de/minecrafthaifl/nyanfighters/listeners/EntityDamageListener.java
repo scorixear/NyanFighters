@@ -3,14 +3,12 @@ package de.minecrafthaifl.nyanfighters.listeners;
 import de.minecrafthaifl.nyanfighters.Nyanfighters;
 import de.minecrafthaifl.nyanfighters.YamlHandler;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-
 import java.io.File;
 
 /**

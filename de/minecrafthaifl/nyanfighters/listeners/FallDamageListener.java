@@ -1,13 +1,8 @@
 package de.minecrafthaifl.nyanfighters.listeners;
 
-import de.minecrafthaifl.nyanfighters.Nyanfighters;
-import de.minecrafthaifl.nyanfighters.YmlMethods;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.inventory.ItemStack;
 
 /**
  * Created by Paul on 11.05.2016.

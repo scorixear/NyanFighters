@@ -7,8 +7,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.yaml.snakeyaml.Yaml;
-
 import static de.minecrafthaifl.nyanfighters.listeners.MoveListener.playerTask;
 import static de.minecrafthaifl.nyanfighters.listeners.MoveListener.rotation;
 
