@@ -2,6 +2,8 @@ package de.minecrafthaifl.nyanfighters.listeners;
 
 import de.minecrafthaifl.nyanfighters.Nyanfighters;
 import de.minecrafthaifl.nyanfighters.YamlHandler;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +26,7 @@ public class AttackListener implements Listener
                 if(!Nyanfighters.getInstance().getGame())                                                               //Spiel läuft nicht
                 {
                     e.setCancelled(true);
+
                 }
                 else                                                                                                    //Spiel läuft
                 {
@@ -31,6 +34,7 @@ public class AttackListener implements Listener
                         FileConfiguration c = Nyanfighters.getInstance().getPlayersConfi();
                         c.set(((Player) e.getEntity()).getUniqueId().toString()+".Attacker",((Player) e.getDamager()).getUniqueId());
                         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(),Nyanfighters.getInstance().getPlayers());
+
                     }
                     else                                                                                                //Angegriffener ist Spectator
                     {

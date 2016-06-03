@@ -31,8 +31,21 @@ public class JoinListener implements Listener
         YamlHandler.saveYamlFile(Nyanfighters.getInstance().getPlayersConfi(), Nyanfighters.getInstance().getPlayers());
         if(c.isSet("LobbySpawn"))                                                                                       //Lobbyspawn ist gesetzt
         {
+            int i = 0;
+            while (c.isSet("SpielSpawn." + i))
+                i++;
+            i--;
+            int random = (int) Math.random() * i;
             Location l = YmlMethods.getLobbySpawn();
-            p.teleport(l);
+            Location s = YmlMethods.getSpielSpawn(i);
+            if(Nyanfighters.getInstance().getGame())
+            {
+                p.teleport(s);
+            }
+            else
+            {
+                p.teleport(l);
+            }
             p.getInventory().clear();
 
             if(!Nyanfighters.getInstance().getGame())

@@ -36,7 +36,7 @@ public class MoveListener implements Listener {
             if (Nyanfighters.getInstance().getNoMove()) {                                                               //Vorbereitungszeit ist aktiv
                 e.setCancelled(true);
                 return;
-            } else if(Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())){
+            } else if(e.getFrom().getBlockY()<254&&Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())){
             //} else if (!Nyanfighters.getInstance().getNoBlocks() && Nyanfighters.getInstance().getGame() && !(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ())) {
                 // Spiel läuft und Spieler hat sich über einen Block hinaus bewegt (unnötiges Blocksetzen verhindert)
                 if ((l.getYaw() <= -45 && l.getYaw() > -135.0) || (l.getYaw() <= 305 && l.getYaw() > 215)) {            //Einstellen der Farben des Regenbogens, abhängig vom Yaw
@@ -122,79 +122,79 @@ public class MoveListener implements Listener {
     public void setArea(int x, int z, Location start, Player p) {                                                       //setzt den Regenbogen. x und z sind jeweils die Verschiebungen,
         if (p.getLocation().getPitch() > 65) {                                      //setzt Luft                        //würde man den linken Block (x) und den vorderen Block(z), um eine Längeneinheit
             setAir("start", 0, 0, start, 4);                                                                            //verschoben, betrachten
-            setAir("left", x, 0, start, 1);
-            setAir("lefttwice", x * 2, 0, start, 14);
-            setAir("right", -x, 0, start, 5);
-            setAir("righttwice", (-x) * 2, 0, start, 9);
+            setAir("left", x, 0, start, 14);
+            //setAir("lefttwice", x * 2, 0, start, 14);
+            setAir("right", -x, 0, start, 9);
+            //setAir("righttwice", (-x) * 2, 0, start, 9);
             setAir("front", 0, z, start, 4);
             setAir("back", 0, -z, start, 4);
-            setAir("leftfront", x, z, start, 1);
-            setAir("lefttwicefront", x * 2, z, start, 14);
-            setAir("rightfront", -x, z, start, 5);
-            setAir("righttwicefront", (-x) * 2, z, start, 9);
-            setAir("leftback", x, -z, start, 1);
-            setAir("lefttwiceback", x * 2, -z, start, 14);
-            setAir("rightback", -x, -z, start, 5);
-            setAir("righttwiceback", (-x) * 2, -z, start, 9);
+            setAir("leftfront", x, z, start, 14);
+            //setAir("lefttwicefront", x * 2, z, start, 14);
+            setAir("rightfront", -x, z, start, 9);
+            //setAir("righttwicefront", (-x) * 2, z, start, 9);
+            setAir("leftback", x, -z, start, 14);
+            //setAir("lefttwiceback", x * 2, -z, start, 14);
+            setAir("rightback", -x, -z, start, 9);
+            //setAir("righttwiceback", (-x) * 2, -z, start, 9);
         } else {                                                                    //setzt Blöcke
             setBlocks("start", 0, 0, start, 4);
-            setBlocks("left", x, 0, start, 1);
-            setBlocks("lefttwice", x * 2, 0, start, 14);
-            setBlocks("right", -x, 0, start, 5);
-            setBlocks("righttwice", (-x) * 2, 0, start, 9);
+            setBlocks("left", x, 0, start, 14);
+            //setBlocks("lefttwice", x * 2, 0, start, 14);
+            setBlocks("right", -x, 0, start, 9);
+            //setBlocks("righttwice", (-x) * 2, 0, start, 9);
             setBlocks("front", 0, z, start, 4);
             setBlocks("back", 0, -z, start, 4);
-            setBlocks("leftfront", x, z, start, 1);
-            setBlocks("lefttwicefront", x * 2, z, start, 14);
-            setBlocks("rightfront", -x, z, start, 5);
-            setBlocks("righttwicefront", (-x) * 2, z, start, 9);
-            setBlocks("leftback", x, -z, start, 1);
-            setBlocks("lefttwiceback", x * 2, -z, start, 14);
-            setBlocks("rightback", -x, -z, start, 5);
-            setBlocks("righttwiceback", (-x) * 2, -z, start, 9);
+            setBlocks("leftfront", x, z, start, 14);
+            //setBlocks("lefttwicefront", x * 2, z, start, 14);
+            setBlocks("rightfront", -x, z, start, 9);
+            //setBlocks("righttwicefront", (-x) * 2, z, start, 9);
+            setBlocks("leftback", x, -z, start, 14);
+            //setBlocks("lefttwiceback", x * 2, -z, start, 14);
+            setBlocks("rightback", -x, -z, start, 9);
+            //setBlocks("righttwiceback", (-x) * 2, -z, start, 9);
         }
     }
 
     public void setArea2(int x, int z, Location start, Player p) {                                                      //setzt den Regenbogen. x und z sind jeweils die Verschiebungen,
         if (p.getLocation().getPitch() > 65) {                                                                          //würde man den linken Block (z) und den vorderen Block(x), um eine Längeneinheit
             setAir("start", 0, 0, start, 4);                                                                            //verschoben, betrachten
-            setAir("left", 0, x, start, 1);
-            setAir("lefttwice", 0, x * 2, start, 14);
-            setAir("right", 0, -x, start, 5);
-            setAir("righttwice", 0, (-x) * 2, start, 9);
+            setAir("left", 0, x, start, 14);
+            //setAir("lefttwice", 0, x * 2, start, 14);
+            setAir("right", 0, -x, start, 9);
+            //setAir("righttwice", 0, (-x) * 2, start, 9);
             setAir("front", z, 0, start, 4);
             setAir("back", -z, 0, start, 4);
-            setAir("leftfront", z, x, start, 1);
-            setAir("lefttwicefront", z, x * 2, start, 14);
-            setAir("rightfront", z, -x, start, 5);
-            setAir("righttwicefront", z, (-x) * 2, start, 9);
-            setAir("leftback", -z, x, start, 1);
-            setAir("lefttwiceback", -z, x * 2, start, 14);
-            setAir("rightback", -z, -x, start, 5);
-            setAir("righttwiceback", -z, (-x) * 2, start, 9);
+            setAir("leftfront", z, x, start, 14);
+            //setAir("lefttwicefront", z, x * 2, start, 14);
+            setAir("rightfront", z, -x, start, 9);
+            //setAir("righttwicefront", z, (-x) * 2, start, 9);
+            setAir("leftback", -z, x, start, 14);
+            //setAir("lefttwiceback", -z, x * 2, start, 14);
+            setAir("rightback", -z, -x, start, 9);
+            //setAir("righttwiceback", -z, (-x) * 2, start, 9);
         } else {
             setBlocks("start", 0, 0, start, 4);
-            setBlocks("left", 0, x, start, 1);
-            setBlocks("lefttwice", 0, x * 2, start, 14);
-            setBlocks("right", 0, -x, start, 5);
-            setBlocks("righttwice", 0, (-x) * 2, start, 9);
+            setBlocks("left", 0, x, start, 14);
+            //setBlocks("lefttwice", 0, x * 2, start, 14);
+            setBlocks("right", 0, -x, start, 9);
+            //setBlocks("righttwice", 0, (-x) * 2, start, 9);
             setBlocks("front", z, 0, start, 4);
             setBlocks("back", -z, 0, start, 4);
-            setBlocks("leftfront", z, x, start, 1);
-            setBlocks("lefttwicefront", z, x * 2, start, 14);
-            setBlocks("rightfront", z, -x, start, 5);
-            setBlocks("righttwicefront", z, (-x) * 2, start, 9);
-            setBlocks("leftback", -z, x, start, 1);
-            setBlocks("lefttwiceback", -z, x * 2, start, 14);
-            setBlocks("rightback", -z, -x, start, 5);
-            setBlocks("righttwiceback", -z, (-x) * 2, start, 9);
+            setBlocks("leftfront", z, x, start, 14);
+            //setBlocks("lefttwicefront", z, x * 2, start, 14);
+            setBlocks("rightfront", z, -x, start, 9);
+            //setBlocks("righttwicefront", z, (-x) * 2, start, 9);
+            setBlocks("leftback", -z, x, start, 14);
+            //setBlocks("lefttwiceback", -z, x * 2, start, 14);
+            setBlocks("rightback", -z, -x, start, 9);
+            //setBlocks("righttwiceback", -z, (-x) * 2, start, 9);
         }
     }
 
     public void setBlocks(String s, int x, int z, Location start, int id) {                                             //setzt einen Block mit den jeweiligen Verschiebungen ausgehend von einer Startlocation und einer ID des Blockes (nur Fakeblocks)
         Location left = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY() - 1, start.getBlockZ() + z);
         Location leftair = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY(), start.getBlockZ() + z);
-        if (leftair.getBlock().getType() == Material.AIR) {
+        /*if (leftair.getBlock().getType() == Material.AIR) {
             for (Player p : Bukkit.getOnlinePlayers())
                 p.sendBlockChange(leftair, Material.AIR, (byte) id);
         }
@@ -208,7 +208,7 @@ public class MoveListener implements Listener {
         if (leftair3.getBlock().getType() == Material.AIR) {
             for (Player p : Bukkit.getOnlinePlayers())
                 p.sendBlockChange(leftair3, Material.AIR, (byte) id);
-        }
+        }*/
         Material block = left.getBlock().getType();
         byte data = left.getBlock().getData();
         if (block == Material.AIR) {
@@ -224,7 +224,7 @@ public class MoveListener implements Listener {
         if (left.getBlock().getType() == Material.AIR)
             for (Player p : Bukkit.getOnlinePlayers())
                 p.sendBlockChange(left, Material.AIR, (byte) id);
-        Location leftair = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY(), start.getBlockZ() + z);
+        /*Location leftair = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY(), start.getBlockZ() + z);
         if (leftair.getBlock().getType() == Material.AIR) {
             for (Player p : Bukkit.getOnlinePlayers())
                 p.sendBlockChange(leftair, Material.AIR, (byte) id);
@@ -238,8 +238,8 @@ public class MoveListener implements Listener {
         if (leftair3.getBlock().getType() == Material.AIR) {
             for (Player p : Bukkit.getOnlinePlayers())
                 p.sendBlockChange(leftair3, Material.AIR, (byte) id);
-        }
-        Location right = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY() - 2, start.getBlockZ() + z);
+        }*/
+        Location right = new Location(start.getWorld(), start.getBlockX() + x, start.getBlockY() - 3, start.getBlockZ() + z);
         Material block = right.getBlock().getType();
         byte data = right.getBlock().getData();
         if (block == Material.AIR) {

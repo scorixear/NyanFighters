@@ -86,7 +86,7 @@ public class DeathListener implements Listener
                 String uuid = playersConfi.getString(player.getUniqueId().toString() + ".Attacker");
                 UUID u = UUID.fromString(uuid);
                 String Attacker = Bukkit.getPlayer(u).getDisplayName();
-                Bukkit.getPlayer(u).playSound(Bukkit.getPlayer(u).getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1, 1);
+                Bukkit.getPlayer(u).playSound(Bukkit.getPlayer(u).getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 10, 1);
                 Bukkit.broadcastMessage("§6[NyanFighters] §c" + player.getDisplayName() + " §7wurde von §a " + Attacker + " §7getötet.");
                 playersConfi.set(player.getUniqueId().toString() + ".Attacker", null);
                 YamlHandler.saveYamlFile(playersConfi, Nyanfighters.getInstance().getPlayers());

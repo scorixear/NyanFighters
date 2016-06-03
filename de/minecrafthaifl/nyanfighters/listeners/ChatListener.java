@@ -16,12 +16,14 @@ public class ChatListener implements Listener
         {
             if(!JoinListener.getCP().contains(e.getPlayer().getUniqueId().toString()))                                  //Spieler ist Spectator
             {
+
                 e.setCancelled(true);
                 for(Player p: Bukkit.getOnlinePlayers())                                                                //Durch alle Spieler iterieren
                 {
                     if(!JoinListener.getCP().contains(p.getUniqueId().toString()))                                      //Ausgewählte Spieler ist Spectator
                     {
                         p.sendMessage("§8[Spec]"+p.getName()+" §f: "+e.getMessage());
+                        e.setMessage("");
                     }
                 }
             }
