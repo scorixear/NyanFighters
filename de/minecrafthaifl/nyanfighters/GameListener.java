@@ -285,6 +285,7 @@ public class  GameListener {
             double random = Math.random() * 3;
             if (random < 1) {
                 Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(trap);
+                Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
             } else if (random < 2) {
                 Bukkit.getPlayer(UUID.fromString(p)).getInventory().addItem(granade);
             } else {
