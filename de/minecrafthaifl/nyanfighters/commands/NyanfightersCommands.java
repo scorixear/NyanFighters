@@ -13,14 +13,14 @@ import java.io.File;
  * Created by Paul on 27.04.2016.
  */
 public class NyanfightersCommands {
-    @Command(name="setspawn", description = "Setzt Spawnpoints", usage = "/setspawn <Lobby/Spiel> [Nummer]", permission = "Nyanfighters.setspawn")
+    @Command(name="setspawn", description = "Setzt Spawnpoints", usage = "/setspawn <Lobby/Spiel/pos> [Nummer]", permission = "Nyanfighters.setspawn")
     public void commandSetSpawn (CommandArgs args)
     {
         Player p = args.getPlayer();
         String[] arg = args.getArgs();
         if(arg.length==0)                                                                   //keine Argumente
         {
-            p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
+            p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel/pos> [Nummer]");
             return;
         }
         else if(arg.length==1)                                                              //1 Argument
@@ -48,7 +48,7 @@ public class NyanfightersCommands {
             }
             else                                                                                                        //falsches Argument
             {
-                p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
+                p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel/pos> [Nummer]");
                 return;
             }
         }
@@ -112,13 +112,45 @@ public class NyanfightersCommands {
                 }
                 else                                                                                                    //falsches 2. Argument
                 {
-                    p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
+                    p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel/pos> [Nummer]");
                     return;
+                }
+            }
+            else if(arg[0].equals("pos"))
+            {
+                if(arg[1].equals("1"))
+                {
+                    FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();
+                    File  f = Nyanfighters.getInstance().getSpawnpoints();
+                    c.set("SpielSpawn.pos1.X", p.getLocation().getBlockX());
+                    c.set("SpielSpawn.pos1.Y", p.getLocation().getBlockY());
+                    c.set("SpielSpawn.pos1.Z", p.getLocation().getBlockZ());
+                    c.set("SpielSpawn.pos1.World", p.getLocation().getWorld().getName());
+                    YamlHandler.saveYamlFile(c, f);
+                    p.sendMessage("§6[NyanFighters] §aPosition 1 erfolgreich gesetzt!");
+                    return;
+
+                }
+                else if(arg[1].equals("2"))
+                {
+                    FileConfiguration c = Nyanfighters.getInstance().getSpawnpointsConfi();
+                    File  f = Nyanfighters.getInstance().getSpawnpoints();
+                    c.set("SpielSpawn.pos2.X", p.getLocation().getBlockX());
+                    c.set("SpielSpawn.pos2.Y", p.getLocation().getBlockY());
+                    c.set("SpielSpawn.pos2.Z", p.getLocation().getBlockZ());
+                    c.set("SpielSpawn.pos2.World", p.getLocation().getWorld().getName());
+                    YamlHandler.saveYamlFile(c, f);
+                    p.sendMessage("§6[NyanFighters] §aPosition 2 erfolgreich gesetzt!");
+                    return;
+                }
+                else
+                {
+                    p.sendMessage("§6[NyanFighters] §cDie Nummer muss 1 oder 2 sein!");
                 }
             }
             else                                                                                                        //falsches 1. Argument
             {
-                p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel> [Nummer]");
+                p.sendMessage("§6[Nyanfighters]§c Nutzung: /setspawn <Lobby/Spiel/pos> [Nummer]");
                 p.sendMessage("§6[Nyanfighters]§c Bedenke: um den Lobbyspawn zu setzten, nutze: /setspawn Lobby");
                 return;
             }
@@ -234,14 +266,14 @@ public class NyanfightersCommands {
         }
 
     }
-    @Command(name="game", description = "Startet/beendet das Spiel", usage = "/game <start/lobby/end>", permission = "Nyanfighers.game")
+    @Command(name="nyanfighters", description = "Startet/beendet das Spiel", usage = "/game <start/lobby/end>", permission = "Nyanfighers.game")
     public void commandGamestart(CommandArgs args)
     {
         Player p = args.getPlayer();
         String[] arg = args.getArgs();
         if(arg.length==0)                                                                                               //kein Argument
         {
-            p.sendMessage("§6[Nyanfighters]§c Nutzung: /game <start/lobby/end>");
+            p.sendMessage("§6[Nyanfighters]§c Nutzung: /nyanfighters <start/lobby/end>");
             return;
         }
         else if(arg.length==1)                                                                                          //1 Argument
@@ -270,14 +302,14 @@ public class NyanfightersCommands {
             }
             else                                                                                                        //falsches Argument
             {
-                p.sendMessage("§6[Nyanfighters]§c Nutzung: /game <start/lobby/end>");
+                p.sendMessage("§6[Nyanfighters]§c Nutzung: /nyanfighters <start/lobby/end>");
                 return;
             }
 
         }
         else                                                                                                            //zu viele Argumente
         {
-            p.sendMessage("§6[Nyanfighters]§c Nutzung: /game <start/lobby/end>");
+            p.sendMessage("§6[Nyanfighters]§c Nutzung: /nyanfighters <start/lobby/end>");
             return;
         }
     }
